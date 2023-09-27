@@ -152,6 +152,7 @@ MonoBehaviour:
   input: {fileID: 6707175380584621522}
   character: {fileID: 7369734153007784184}
   body: {fileID: 316494276461638356}
+  pView: {fileID: 4351185935797541288}
 --- !u!114 &4351185935797541288
 MonoBehaviour:
   m_ObjectHideFlags: 0

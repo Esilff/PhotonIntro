@@ -44,7 +44,9 @@ public class PlayerController : MonoBehaviour, IPunObservable
         {
             Vector3 pos = Vector3.zero;
             stream.Serialize(ref pos);
+            transform.localPosition = pos;
         }
+        
         
     }
 }
