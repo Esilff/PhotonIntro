@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
     [SerializeField] private Transform character;
 
     [SerializeField] private Rigidbody body;
+    [SerializeField] private PhotonView pView;
 
     private Vector2 _movementAxis;
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
     // Update is called once per frame
     void Update()
     {
+        if (!pView.IsMine) return;
         _movementAxis = input.actions["movement"].ReadValue<Vector2>();
     }
 

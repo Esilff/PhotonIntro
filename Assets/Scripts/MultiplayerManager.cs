@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class MultiplayerManager : MonoBehaviourPunCallbacks
 {
-    [SerializeField] private GameObject playerPrefab;
+    private GameObject _currentPlayer;
     // Start is called before the first frame update
+    
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
@@ -23,6 +24,11 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.Instantiate("PlayerPrefab", Vector3.zero, Quaternion.identity);
+        _currentPlayer = PhotonNetwork.Instantiate("PlayerPrefab", Vector3.zero, Quaternion.identity);
+    }
+
+    public override void OnLeftRoom()
+    {
+        PhotonNetwork.Destroy(_currentPlayer);
     }
 }
