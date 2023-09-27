@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class MultiplayerManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private GameObject playerPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +19,10 @@ public class MultiplayerManager : MonoBehaviourPunCallbacks
         roomOptions.IsVisible = false;
         roomOptions.MaxPlayers = 4;
         PhotonNetwork.JoinOrCreateRoom("TestRoom", roomOptions, TypedLobby.Default);
+    }
+
+    public override void OnJoinedRoom()
+    {
+        PhotonNetwork.Instantiate("PlayerPrefab", Vector3.zero, Quaternion.identity);
     }
 }
